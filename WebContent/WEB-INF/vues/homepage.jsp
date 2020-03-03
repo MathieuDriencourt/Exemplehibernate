@@ -9,6 +9,6 @@
 <body>
 
 <h1>Welcome to product manager</h1>
-<a href = ""><h3>Create a new product </h3></a>
+<a href = "/Exemplehibernate/add"><h3>Create a new product </h3></a>
 </body>
 </html>

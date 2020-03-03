@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -44,10 +46,17 @@ public class AjoutProduitServlet extends HttpServlet {
 		pr.setDescription(request.getParameter("description"));
 		IProduit dao = new DaoProduit();
 		int i = dao.create(pr);
+		
+		List<Produit> list = dao.getProduits();
+		//j'ai besoin de déclarer une liste des produits qui reçoit 
+		request.setAttribute("produit", list);
+		
 		if (i == 1) request.setAttribute("message", "this product was created successfully");
 		else if (i == 0) request.setAttribute("message", "this product hasn't been created. Mistake ");
 		
-		this.getServletContext().getRequestDispatcher("/WEB-INF/vues/produits.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/vues/produit.jsp").forward(request, response);
+		
+		
 	}
 
 }
